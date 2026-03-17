@@ -1,20 +1,38 @@
 /* ============================================
    TAWHID - Authentication Pages Stylesheet
+   Responsive Improved Version
    ============================================ */
 
-/* Auth Page */
+/* Base */
 .auth-page {
     min-height: 100vh;
+    min-height: 100dvh;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    overflow-x: hidden;
 }
 
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+    box-sizing: border-box;
+}
+
+/* Auth Page Layout */
 .auth-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
+    width: 100%;
 }
 
+.auth-card,
+.auth-info {
+    min-width: 0;
+}
+
+/* Background Shapes */
 .auth-bg {
     position: fixed;
     top: 0;
@@ -23,6 +41,7 @@
     bottom: 0;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
 }
 
 .auth-shape {
@@ -58,8 +77,10 @@
     position: relative;
     z-index: 1;
     background: var(--white);
+    width: 100%;
 }
 
+/* Header */
 .auth-header {
     text-align: center;
     margin-bottom: 40px;
@@ -73,6 +94,8 @@
     font-weight: 700;
     color: var(--dark);
     margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .auth-logo .logo-icon {
@@ -85,23 +108,26 @@
     justify-content: center;
     color: var(--white);
     font-size: 1.3rem;
+    flex-shrink: 0;
 }
 
 .auth-header h1 {
     font-size: 2rem;
     color: var(--dark);
     margin-bottom: 10px;
+    line-height: 1.2;
 }
 
 .auth-header p {
     color: var(--gray-500);
+    line-height: 1.6;
 }
 
 /* Auth Form */
 .auth-form {
     max-width: 400px;
-    margin: 0 auto;
     width: 100%;
+    margin: 0 auto;
 }
 
 .auth-form .form-group {
@@ -115,10 +141,12 @@
     font-weight: 500;
     color: var(--gray-700);
     margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 .auth-form label i {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .auth-form input {
@@ -139,6 +167,7 @@
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
+/* Password Input */
 .password-input {
     position: relative;
 }
@@ -169,6 +198,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
     margin-bottom: 25px;
 }
 
@@ -179,6 +209,7 @@
     cursor: pointer;
     font-size: 0.9rem;
     color: var(--gray-600);
+    line-height: 1.4;
 }
 
 .checkbox-label input {
@@ -194,6 +225,7 @@
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .checkbox-label input:checked + .checkmark {
@@ -210,6 +242,7 @@
 .forgot-link {
     color: var(--primary);
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .forgot-link:hover {
@@ -220,10 +253,9 @@
 .auth-divider {
     display: flex;
     align-items: center;
-    margin: 30px 0;
+    margin: 30px auto;
     max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 .auth-divider::before,
@@ -238,12 +270,14 @@
     padding: 0 15px;
     color: var(--gray-400);
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
-/* Auth Footer */
+/* Footer */
 .auth-footer {
     text-align: center;
     color: var(--gray-500);
+    line-height: 1.6;
 }
 
 .auth-footer a {
@@ -310,18 +344,22 @@
     color: var(--white);
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 520px;
 }
 
 .auth-info-content h2 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .auth-info-content p {
     font-size: 1.2rem;
     opacity: 0.9;
     margin-bottom: 40px;
+    line-height: 1.6;
 }
 
 .auth-features {
@@ -338,19 +376,23 @@
     padding: 15px 25px;
     border-radius: var(--radius-md);
     backdrop-filter: blur(10px);
+    width: 100%;
 }
 
 .auth-feature i {
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .auth-feature span {
     font-weight: 500;
+    line-height: 1.5;
 }
 
 /* OTP Form */
 .otp-form {
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -376,10 +418,12 @@
     font-size: 1.5rem;
     color: var(--dark);
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .otp-header p {
     color: var(--gray-500);
+    line-height: 1.6;
 }
 
 .otp-demo-message {
@@ -389,6 +433,7 @@
     border-radius: var(--radius-md);
     text-align: center;
     margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .otp-demo-message i {
@@ -400,6 +445,8 @@
     color: var(--primary);
     font-size: 1.5rem;
     letter-spacing: 5px;
+    display: inline-block;
+    word-break: break-word;
 }
 
 .otp-timer {
@@ -409,6 +456,7 @@
     text-align: center;
     margin-bottom: 20px;
     color: var(--gray-600);
+    line-height: 1.5;
 }
 
 .otp-timer i {
@@ -420,7 +468,35 @@
     color: var(--danger);
 }
 
-/* Responsive */
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .auth-card,
+    .auth-info {
+        padding: 48px;
+    }
+
+    .auth-info-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .auth-info-content p {
+        font-size: 1.1rem;
+    }
+
+    .auth-shape.shape-1 {
+        width: 420px;
+        height: 420px;
+    }
+
+    .auth-shape.shape-2 {
+        width: 320px;
+        height: 320px;
+    }
+}
+
 @media (max-width: 992px) {
     .auth-container {
         grid-template-columns: 1fr;
@@ -432,21 +508,192 @@
 
     .auth-card {
         padding: 40px 30px;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .auth-shape.shape-1 {
+        width: 320px;
+        height: 320px;
+        top: -120px;
+        right: -60px;
+    }
+
+    .auth-shape.shape-2 {
+        width: 260px;
+        height: 260px;
+        bottom: -100px;
+        left: -60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 36px 24px;
+    }
+
+    .auth-header {
+        margin-bottom: 32px;
+    }
+
+    .auth-logo {
+        margin-bottom: 24px;
+        font-size: 1.35rem;
+    }
+
+    .auth-logo .logo-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.15rem;
+    }
+
+    .auth-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .auth-header p {
+        font-size: 0.95rem;
+    }
+
+    .auth-form,
+    .otp-form,
+    .auth-divider {
+        max-width: 100%;
+    }
+
+    .otp-icon {
+        width: 72px;
+        height: 72px;
+        font-size: 1.7rem;
+    }
+
+    .otp-header h3 {
+        font-size: 1.35rem;
     }
 }
 
 @media (max-width: 576px) {
     .auth-card {
-        padding: 30px 20px;
+        padding: 28px 18px;
     }
 
     .auth-header h1 {
         font-size: 1.5rem;
     }
 
+    .auth-form input {
+        padding: 13px 16px;
+        font-size: 0.95rem;
+    }
+
+    .password-input input {
+        padding-right: 46px;
+    }
+
+    .toggle-password {
+        right: 12px;
+    }
+
     .form-options {
         flex-direction: column;
-        gap: 15px;
         align-items: flex-start;
+        gap: 14px;
+    }
+
+    .forgot-link {
+        white-space: normal;
+    }
+
+    .auth-divider {
+        margin: 24px auto;
+    }
+
+    .auth-divider span {
+        padding: 0 12px;
+        font-size: 0.85rem;
+    }
+
+    .auth-back {
+        margin-top: 24px;
+    }
+
+    .otp-demo-message {
+        padding: 16px;
+    }
+
+    .otp-demo-message strong {
+        font-size: 1.3rem;
+        letter-spacing: 4px;
+    }
+
+    .otp-timer {
+        padding: 12px 16px;
+    }
+
+    .auth-shape.shape-1 {
+        width: 240px;
+        height: 240px;
+        top: -90px;
+        right: -70px;
+    }
+
+    .auth-shape.shape-2 {
+        width: 200px;
+        height: 200px;
+        bottom: -70px;
+        left: -70px;
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-card {
+        padding: 24px 14px;
+    }
+
+    .auth-logo {
+        font-size: 1.2rem;
+        gap: 8px;
+    }
+
+    .auth-logo .logo-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .auth-header h1 {
+        font-size: 1.35rem;
+    }
+
+    .auth-header p,
+    .auth-footer,
+    .auth-back a,
+    .checkbox-label,
+    .forgot-link {
+        font-size: 0.88rem;
+    }
+
+    .auth-form label {
+        font-size: 0.92rem;
+    }
+
+    .auth-form input {
+        padding: 12px 14px;
+        font-size: 0.92rem;
+    }
+
+    .otp-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 1.5rem;
+    }
+
+    .otp-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .otp-demo-message strong {
+        font-size: 1.15rem;
+        letter-spacing: 3px;
     }
 }
