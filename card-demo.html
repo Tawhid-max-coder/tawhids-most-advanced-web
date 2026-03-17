@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Payment - TAWHIDs Websites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                <span class="logo-text">TAWHID</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="wallet.html">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="plans.html">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Plans</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions.html">
+                        <i class="fas fa-history"></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <h1>Card Payment</h1>
+            </div>
+            <div class="topbar-user">
+                <div class="user-info">
+                    <span class="user-name" id="topUserName">User</span>
+                    <span class="user-role">Member</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Card Payment Content -->
+        <div class="dashboard-content">
+            <!-- Warning Banner -->
+            <div class="warning-banner">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="warning-content">
+                    <h3>Double Check Your Information Before Proceeding</h3>
+                    <p> Enter Your Informations Correctly </p>
+                </div>
+            </div>
+
+            <!-- Card Form Section -->
+            <div class="payment-form-section">
+                <div class="payment-form-card">
+                    <div class="form-header">
+                        <div class="form-header-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h2>Card Payment Details</h2>
+                        <p>Enter Your Credentials</p>
+                    </div>
+
+                    <!-- Card Form -->
+                    <form class="payment-form" id="cardForm">
+                        <div class="form-group">
+                            <label for="cardHolder">
+                                <i class="fas fa-user"></i> Card Holder Name
+                            </label>
+                            <input type="text" id="cardHolder" placeholder="Enter any name (e.g., John Doe)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardNumber">
+                                <i class="fas fa-credit-card"></i> Card Number
+                            </label>
+                            <input type="text" id="cardNumber" placeholder="Enter any 16 digits (e.g., 1234567890123456)" maxlength="19" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">
+                                    <i class="fas fa-calendar"></i> Expiry Date
+                                </label>
+                                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">
+                                    <i class="fas fa-lock"></i> CVV
+                                </label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">
+                                <i class="fas fa-money-bill"></i> Amount (৳)
+                            </label>
+                            <input type="number" id="amount" placeholder="Enter amount to add" min="100" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-paper-plane"></i> Proceed to Pay
+                        </button>
+                    </form>
+
+                    <!-- OTP Verification Form (Hidden) -->
+                    <form class="otp-verification-form" id="otpForm" style="display: none;">
+                        <div class="otp-header">
+                            <div class="otp-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Verify Payment</h3>
+                            <p>Enter the OTP to complete your payment</p>
+                        </div>
+
+                        <div class="otp-demo-message" id="otpDemoMessage">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Your OTP for Tawhids Websites is: <strong id="displayOtp">------</strong></span>
+                        </div>
+
+                        <div class="otp-timer" id="otpTimer">
+                            <i class="fas fa-clock"></i>
+                            <span>OTP expires in: <strong id="timerDisplay">30</strong> seconds</span>
+                        </div>
+
+                        <div class="otp-amount">
+                            <span>Amount to be added:</span>
+                            <strong>৳<span id="otpAmount">0</span></strong>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otp">
+                                <i class="fas fa-key"></i> Enter OTP
+                            </label>
+                            <input type="text" id="otp" placeholder="Enter 6-digit OTP" maxlength="6" required pattern="[0-9]{6}">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-check-circle"></i> Verify & Complete Payment
+                        </button>
+
+                        <button type="button" class="btn btn-outline btn-block" id="resendOtp" disabled>
+                            <i class="fas fa-redo"></i> Resend OTP
+                        </button>
+
+                        <button type="button" class="btn btn-link" onclick="showCardForm()">
+                            <i class="fas fa-arrow-left"></i> Back to Card Details
+                        </button>
+                    </form>
+
+                    <a href="wallet.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Wallet
+                    </a>
+                </div>
+
+                <!-- Card Visual -->
+                <div class="card-visual">
+                    <div class="credit-card">
+                        <div class="card-top">
+                            <div class="card-chip"></div>
+                            <div class="card-type">
+                                <i class="fab fa-cc-visa"></i>
+                            </div>
+                        </div>
+                        <div class="card-number" id="cardNumberDisplay">
+                            •••• •••• •••• ••••
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-holder-info">
+                                <span class="label">Card Holder</span>
+                                <span class="value" id="cardHolderDisplay">YOUR NAME</span>
+                            </div>
+                            <div class="card-expiry-info">
+                                <span class="label">Expires</span>
+                                <span class="value" id="expiryDisplay">MM/YY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-security-badges">
+                        <div class="security-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secured</span>
+                        </div>
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Encrypted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 TAWHID. All Rights Reserved. Powered by TAWHID.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Message</span>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script>
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = Storage.getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update UI
+            document.getElementById('topUserName').textContent = currentUser.name;
+            
+            // Initialize sidebar
+            initSidebar();
+            
+            // Initialize card form
+            initCardForm();
+        });
+
+        // Sidebar functionality
+        function initSidebar() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                Storage.logout();
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Card form functionality
+        let otpTimer;
+        let pendingAmount = 0;
+
+        function initCardForm() {
+            const cardForm = document.getElementById('cardForm');
+            const otpForm = document.getElementById('otpForm');
+            const resendBtn = document.getElementById('resendOtp');
+
+            // Card input formatting
+            document.getElementById('cardNumber').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+                value = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = value;
+                document.getElementById('cardNumberDisplay').textContent = value || '•••• •••• •••• ••••';
+            });
+
+            document.getElementById('cardHolder').addEventListener('input', function(e) {
+                document.getElementById('cardHolderDisplay').textContent = e.target.value.toUpperCase() || 'YOUR NAME';
+            });
+
+            document.getElementById('expiry').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.slice(0, 2) + '/' + value.slice(2);
+                }
+                e.target.value = value;
+                document.getElementById('expiryDisplay').textContent = value || 'MM/YY';
+            });
+
+            // Card form submission
+            cardForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const amount = parseFloat(document.getElementById('amount').value);
+                
+                if (amount < 100) {
+                    showToast('Minimum amount is ৳100', 'error');
+                    return;
+                }
+
+                pendingAmount = amount;
+                
+                // Generate OTP
+                generatePaymentOTP();
+                
+                // Show OTP form
+                cardForm.style.display = 'none';
+                otpForm.style.display = 'block';
+                document.getElementById('otpAmount').textContent = amount;
+            });
+
+            // OTP form submission
+            otpForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const enteredOtp = document.getElementById('otp').value;
+                const storedOtp = localStorage.getItem('paymentOTP');
+                const otpExpiry = parseInt(localStorage.getItem('otpExpiry'));
+
+                if (Date.now() > otpExpiry) {
+                    showToast('OTP has expired. Please resend.', 'error');
+                    return;
+                }
+
+                if (enteredOtp !== storedOtp) {
+                    showToast('Invalid OTP. Please try again.', 'error');
+                    return;
+                }
+
+                // OTP verified - Add balance
+                completePayment();
+            });
+
+            // Resend OTP
+            resendBtn.addEventListener('click', function() {
+                generatePaymentOTP();
+            });
+        }
+
+        function generatePaymentOTP() {
+            // Generate 6-digit OTP
+            const otp = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Store OTP with expiry
+            localStorage.setItem('paymentOTP', otp);
+            localStorage.setItem('otpExpiry', (Date.now() + 60000).toString());
+            
+            // Display OTP (demo)
+            document.getElementById('displayOtp').textContent = otp;
+            
+            // Start timer
+            startOTPTimer();
+            
+            showToast('OTP generated successfully!', 'success');
+        }
+
+        function startOTPTimer() {
+            let seconds = 60;
+            const timerDisplay = document.getElementById('timerDisplay');
+            const resendBtn = document.getElementById('resendOtp');
+            
+            clearInterval(otpTimer);
+            resendBtn.disabled = true;
+            
+            otpTimer = setInterval(() => {
+                seconds--;
+                timerDisplay.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(otpTimer);
+                    timerDisplay.textContent = '0';
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function completePayment() {
+            const currentUser = Storage.getCurrentUser();
+            
+            // Update user balance
+            const users = Storage.getUsers();
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            
+            if (userIndex !== -1) {
+                users[userIndex].balance = (users[userIndex].balance || 0) + pendingAmount;
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Update current user
+                currentUser.balance = users[userIndex].balance;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+
+            // Add transaction
+            const transaction = {
+                id: Date.now(),
+                userEmail: currentUser.email,
+                type: 'deposit',
+                method: 'Card Payment',
+                amount: pendingAmount,
+                date: new Date().toISOString(),
+                description: 'Deposit via Card'
+            };
+            
+            const transactions = Storage.getTransactions();
+            transactions.push(transaction);
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+
+            // Clear OTP data
+            localStorage.removeItem('paymentOTP');
+            localStorage.removeItem('otpExpiry');
+            clearInterval(otpTimer);
+
+            showToast('Payment successful! ৳' + pendingAmount + ' added to your wallet.', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'wallet.html';
+            }, 2000);
+        }
+
+        function showCardForm() {
+            document.getElementById('cardForm').style.display = 'block';
+            document.getElementById('otpForm').style.display = 'none';
+            clearInterval(otpTimer);
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const icon = toast.querySelector('i');
+            
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

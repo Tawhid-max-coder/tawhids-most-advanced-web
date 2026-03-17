@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Full information about Tawhid.</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use a Cyberpunk/Techy Font (e.g., Share Tech Mono as fallback) -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Colors and Fonts for Cyberpunk Look */
+        :root {
+            --neon-blue: #00e0ff;
+            --neon-pink: #ff00ff;
+            --deep-black: #0a0a0a;
+            --dark-bg: #111827;
+        }
+
+        body {
+            font-family: 'Orbitron', 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: var(--deep-black);
+            color: var(--neon-blue);
+            min-height: 100vh;
+        }
+        
+        /* 1. Full-screen, fixed, animated background */
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--deep-black) 0%, var(--dark-bg) 50%, var(--deep-black) 100%);
+            z-index: -3; /* Lowest layer */
+        }
+
+        /* 2. Scanning Line Animation (For Complexity) */
+        #scanner-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+            box-shadow: 0 0 10px var(--neon-blue);
+            z-index: -1;
+            animation: scan 6s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(100vh); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 3. Fragmented, Glowing Card Style */
+        .complex-data-unit {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 224, 255, 0.4), inset 0 0 5px rgba(0, 224, 255, 0.2); /* Neon glow */
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .complex-data-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 224, 255, 0.1),
+                rgba(0, 224, 255, 0.1) 1px,
+                transparent 1px,
+                transparent 10px
+            );
+            z-index: 0; /* Scan line effect inside card */
+            animation: data-flow 15s linear infinite;
+        }
+
+        .complex-data-unit:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.7), inset 0 0 10px rgba(255, 0, 255, 0.4); /* Pink hover glow */
+            border-color: var(--neon-pink);
+        }
+
+        @keyframes data-flow {
+            from { background-position: 0 0; }
+            to { background-position: 100px 100px; }
+        }
+
+        /* 4. Glitch/Flicker for Text Headers */
+        .glitch {
+            text-shadow: 
+                -1px 0 var(--neon-pink), 
+                1px 0 var(--neon-blue);
+            animation: glitch-flicker 4s infinite linear alternate;
+        }
+
+        @keyframes glitch-flicker {
+            0%, 19%, 21%, 50%, 55%, 60%, 65%, 70%, 75%, 80%, 85%, 100% {
+                text-shadow: 
+                    -1px 0 var(--neon-pink), 
+                    1px 0 var(--neon-blue);
+                opacity: 0.9;
+            }
+            20%, 51%, 61%, 71%, 81%, 90% {
+                text-shadow: 
+                    2px 0 var(--neon-pink), 
+                    -2px 0 var(--neon-blue);
+                opacity: 1;
+                transform: scale(1.01);
+            }
+            10%, 30%, 40%, 95% {
+                text-shadow: 
+                    0 0 var(--neon-pink), 
+                    0 0 var(--neon-blue);
+                opacity: 0.85;
+            }
+        }
+
+        /* Profile image specific styling */
+        .profile-img-container {
+            width: 128px; /* Larger circular image */
+            height: 128px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink), inset 0 0 5px var(--neon-pink);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .profile-img-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--neon-blue), inset 0 0 8px var(--neon-blue);
+            border-color: var(--neon-blue);
+        }
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 flex items-center justify-center">
+
+    <div id="background"></div>
+    <div id="scanner-line"></div>
+
+    <div class="w-full max-w-6xl p-4 lg:p-8 relative z-10">
+
+        <header class="text-center mb-10 p-4 rounded-xl complex-data-unit border-b-2 border-neon-pink">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white glitch uppercase">
+                // Full information about Tawhid. //
+            </h1>
+            <p class="text-lg mt-2 text-neon-pink">................................</p>
+        </header>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Profile Picture Unit (Static - Code Editable Only) -->
+            <div class="p-6 rounded-xl complex-data-unit flex flex-col items-center justify-center gap-4 md:col-span-1">
+                <span class="block text-sm uppercase text-neon-pink text-center">// Picture //</span>
+                <div class="profile-img-container">
+                    <!-- 
+                        TO USE YOUR LOCAL 'profileimage.jpg': 
+                        1. Convert 'profileimage.jpg' to a Base64 string using an online tool.
+                        2. Replace 'REPLACE_THIS...' with the entire Base64 string content.
+                        
+                        Example format for Base64 (replace the long string after the comma): 
+                        data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDTAgCTvwWADlXFh5aXbuSAAAAAElFTkSuQmCC
+                    -->
+                    <img id="profileImageDisplay" 
+                         src="profileimage.jpg" 
+                         alt="Profile Avatar">
+                </div>
+                <span class="text-xs text-neon-blue/70">Mohammed Tawhidul Haque</span>
+            </div>
+
+            <!-- Full Name Unit -->
+            <div class="p-6 rounded-xl complex-data-unit col-span-1 md:col-span-2">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// Full Name:</span>
+                    <span class="block text-3xl font-bold text-white tracking-widest">MOHAMMED TAWHIDUL HAQUE</span>
+                </div>
+            </div>
+
+            <!-- Current Role Unit -->
+            <div class="p-6 rounded-xl complex-data-unit">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// Current Status:</span>
+                    <span class="block text-2xl font-semibold text-neon-blue">CLASS 09 STUDENT</span>
+                </div>
+            </div>
+
+            <!-- Institution Unit (Takes full row on small/medium) -->
+            <div class="p-6 rounded-xl complex-data-unit col-span-full">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// School Name</span>
+                    <span class="block text-3xl font-semibold text-white">BLUE BIRD HIGH SCHOOL AND COLLEGE</span>
+                </div>
+            </div>
+
+            <!-- Location City Unit -->
+            <div class="p-6 rounded-xl complex-data-unit">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// School Location</span>
+                    <span class="block text-2xl font-semibold text-neon-blue">SUBIDBAZAR, SYLHET</span>
+                </div>
+            </div>
+            
+            <!-- Location Country Unit -->
+            <div class="p-6 rounded-xl complex-data-unit">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// Name of COUNTRY</span>
+                    <span class="block text-2xl font-semibold text-neon-blue">BANGLADESH</span>
+                </div>
+            </div>
+
+            <!-- Contact Method Unit -->
+            <div class="p-6 rounded-xl complex-data-unit">
+                <div class="relative z-10">
+                    <span class="block text-sm uppercase mb-1 text-neon-pink">// CONTACT NUMBER (IF EMERGENCY)</span>
+                    <span class="block text-2xl font-semibold text-white">CALL 01911******</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

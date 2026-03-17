@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Banking - TAWHIDs Websites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                <span class="logo-text">TAWHIDs Wwbsites</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="wallet.html">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="plans.html">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Plans</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions.html">
+                        <i class="fas fa-history"></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <h1>Mobile Banking</h1>
+            </div>
+            <div class="topbar-user">
+                <div class="user-info">
+                    <span class="user-name" id="topUserName">User</span>
+                    <span class="user-role">Member</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Banking Content -->
+        <div class="dashboard-content">
+            <!-- Warning Banner -->
+            <div class="warning-banner">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="warning-content">
+                    <h3>Enter Your Informations Correctly</h3>
+                    <p>Double checkkk your informations before procceding</p>
+                </div>
+            </div>
+
+            <!-- Mobile Form Section -->
+            <div class="payment-form-section">
+                <div class="payment-form-card">
+                    <div class="form-header">
+                        <div class="form-header-icon mobile-banking">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h2>Mobile Banking Payment</h2>
+                        <p>Enter your details</p>
+                    </div>
+
+                    <!-- Mobile Form -->
+                    <form class="payment-form" id="mobileForm">
+                        <div class="form-group">
+                            <label for="method">
+                                <i class="fas fa-university"></i> Select Method
+                            </label>
+                            <select id="method" required>
+                                <option value="">Choose a method</option>
+                                <option value="bKash">BKash</option>
+                                <option value="Nagad">Nagad</option>
+                                <option value="Rocket">Rocket</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobileNumber">
+                                <i class="fas fa-phone"></i> Mobile Number
+                            </label>
+                            <input type="tel" id="mobileNumber" placeholder="Enter any number (e.g., 01700000000)" maxlength="11" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pin">
+                                <i class="fas fa-lock"></i> Enter PIN
+                            </label>
+                            <input type="password" id="pin" placeholder="Enter any 4-5 digit PIN" maxlength="5" required>
+                            <small class="form-hint">Enter your 5 digits pin here. (e.g., 12345)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">
+                                <i class="fas fa-money-bill"></i> Amount (৳)
+                            </label>
+                            <input type="number" id="amount" placeholder="Enter amount to add" min="100" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-paper-plane"></i> Proceed to Pay
+                        </button>
+                    </form>
+
+                    <!-- OTP Verification Form (Hidden) -->
+                    <form class="otp-verification-form" id="otpForm" style="display: none;">
+                        <div class="otp-header">
+                            <div class="otp-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Verify Payment</h3>
+                            <p>Enter the OTP sent to your mobile</p>
+                        </div>
+
+                        <div class="otp-demo-message" id="otpDemoMessage">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Your OTP for Tawhids Websites payment is: <strong id="displayOtp">------</strong></span>
+                        </div>
+
+                        <div class="otp-timer" id="otpTimer">
+                            <i class="fas fa-clock"></i>
+                            <span>OTP expires in: <strong id="timerDisplay">30</strong> seconds</span>
+                        </div>
+
+                        <div class="otp-amount">
+                            <span>Amount to be added via <strong id="selectedMethod">Method</strong>:</span>
+                            <strong>৳<span id="otpAmount">0</span></strong>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otp">
+                                <i class="fas fa-key"></i> Enter OTP
+                            </label>
+                            <input type="text" id="otp" placeholder="Enter 6-digit OTP" maxlength="6" required pattern="[0-9]{6}">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-check-circle"></i> Verify & Complete Payment
+                        </button>
+
+                        <button type="button" class="btn btn-outline btn-block" id="resendOtp" disabled>
+                            <i class="fas fa-redo"></i> Resend OTP
+                        </button>
+
+                        <button type="button" class="btn btn-link" onclick="showMobileForm()">
+                            <i class="fas fa-arrow-left"></i> Back to Mobile Banking
+                        </button>
+                    </form>
+
+                    <a href="wallet.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Wallet
+                    </a>
+                </div>
+
+                <!-- Mobile Visual -->
+                <div class="mobile-visual">
+                    <div class="mobile-frame">
+                        <div class="mobile-notch"></div>
+                        <div class="mobile-screen">
+                            <div class="mobile-app-header" id="appHeader">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile Banking</span>
+                            </div>
+                            <div class="mobile-app-content">
+                                <div class="app-balance">
+                                    <span class="label">Payment Amount</span>
+                                    <span class="amount" id="displayAmount">৳0</span>
+                                </div>
+                                <div class="app-merchant">
+                                    <span class="label">Merchant</span>
+                                    <span class="name">TAWHIDs Websites Services</span>
+                                </div>
+                                <div class="app-status">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <span>Processing...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-home-btn"></div>
+                    </div>
+                    <div class="mobile-info">
+                        <div class="info-badge bkash">
+                            <span>BKash</span>
+                        </div>
+                        <div class="info-badge nagad">
+                            <span>Nagad</span>
+                        </div>
+                        <div class="info-badge rocket">
+                            <span>Rocket</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 TAWHID. All Rights Reserved. Powered by TAWHID.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Message</span>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script>
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = Storage.getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update UI
+            document.getElementById('topUserName').textContent = currentUser.name;
+            
+            // Initialize sidebar
+            initSidebar();
+            
+            // Initialize mobile form
+            initMobileForm();
+        });
+
+        // Sidebar functionality
+        function initSidebar() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                Storage.logout();
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Mobile form functionality
+        let otpTimer;
+        let pendingAmount = 0;
+        let selectedMethod = '';
+
+        function initMobileForm() {
+            const mobileForm = document.getElementById('mobileForm');
+            const otpForm = document.getElementById('otpForm');
+            const resendBtn = document.getElementById('resendOtp');
+
+            // Method change handler
+            document.getElementById('method').addEventListener('change', function(e) {
+                selectedMethod = e.target.value;
+                const header = document.getElementById('appHeader');
+                
+                if (selectedMethod === 'bKash') {
+                    header.style.background = 'linear-gradient(135deg, #e2136e, #9c0d4e)';
+                } else if (selectedMethod === 'Nagad') {
+                    header.style.background = 'linear-gradient(135deg, #f26522, #c94e10)';
+                } else if (selectedMethod === 'Rocket') {
+                    header.style.background = 'linear-gradient(135deg, #8b2f89, #5a1d58)';
+                } else {
+                    header.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+                }
+            });
+
+            // Amount input handler
+            document.getElementById('amount').addEventListener('input', function(e) {
+                document.getElementById('displayAmount').textContent = '৳' + (e.target.value || '0');
+            });
+
+            // Mobile form submission
+            mobileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const method = document.getElementById('method').value;
+                const amount = parseFloat(document.getElementById('amount').value);
+                
+                if (!method) {
+                    showToast('Please select a payment method', 'error');
+                    return;
+                }
+
+                if (amount < 100) {
+                    showToast('Minimum amount is ৳100', 'error');
+                    return;
+                }
+
+                pendingAmount = amount;
+                selectedMethod = method;
+                
+                // Generate OTP
+                generatePaymentOTP();
+                
+                // Show OTP form
+                mobileForm.style.display = 'none';
+                otpForm.style.display = 'block';
+                document.getElementById('otpAmount').textContent = amount;
+                document.getElementById('selectedMethod').textContent = method;
+            });
+
+            // OTP form submission
+            otpForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const enteredOtp = document.getElementById('otp').value;
+                const storedOtp = localStorage.getItem('paymentOTP');
+                const otpExpiry = parseInt(localStorage.getItem('otpExpiry'));
+
+                if (Date.now() > otpExpiry) {
+                    showToast('OTP has expired. Please resend.', 'error');
+                    return;
+                }
+
+                if (enteredOtp !== storedOtp) {
+                    showToast('Invalid OTP. Please try again.', 'error');
+                    return;
+                }
+
+                // OTP verified - Add balance
+                completePayment();
+            });
+
+            // Resend OTP
+            resendBtn.addEventListener('click', function() {
+                generatePaymentOTP();
+            });
+        }
+
+        function generatePaymentOTP() {
+            // Generate 6-digit OTP
+            const otp = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Store OTP with expiry
+            localStorage.setItem('paymentOTP', otp);
+            localStorage.setItem('otpExpiry', (Date.now() + 60000).toString());
+            
+            // Display OTP (demo)
+            document.getElementById('displayOtp').textContent = otp;
+            
+            // Start timer
+            startOTPTimer();
+            
+            showToast('OTP generated successfully!', 'success');
+        }
+
+        function startOTPTimer() {
+            let seconds = 60;
+            const timerDisplay = document.getElementById('timerDisplay');
+            const resendBtn = document.getElementById('resendOtp');
+            
+            clearInterval(otpTimer);
+            resendBtn.disabled = true;
+            
+            otpTimer = setInterval(() => {
+                seconds--;
+                timerDisplay.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(otpTimer);
+                    timerDisplay.textContent = '0';
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function completePayment() {
+            const currentUser = Storage.getCurrentUser();
+            
+            // Update user balance
+            const users = Storage.getUsers();
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            
+            if (userIndex !== -1) {
+                users[userIndex].balance = (users[userIndex].balance || 0) + pendingAmount;
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Update current user
+                currentUser.balance = users[userIndex].balance;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+
+            // Add transaction
+            const transaction = {
+                id: Date.now(),
+                userEmail: currentUser.email,
+                type: 'deposit',
+                method: selectedMethod,
+                amount: pendingAmount,
+                date: new Date().toISOString(),
+                description: 'Deposit via ' + selectedMethod
+            };
+            
+            const transactions = Storage.getTransactions();
+            transactions.push(transaction);
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+
+            // Clear OTP data
+            localStorage.removeItem('paymentOTP');
+            localStorage.removeItem('otpExpiry');
+            clearInterval(otpTimer);
+
+            showToast('Payment successful! ৳' + pendingAmount + ' added via ' + selectedMethod, 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'wallet.html';
+            }, 2000);
+        }
+
+        function showMobileForm() {
+            document.getElementById('mobileForm').style.display = 'block';
+            document.getElementById('otpForm').style.display = 'none';
+            clearInterval(otpTimer);
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const icon = toast.querySelector('i');
+            
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TAWHIDs Websites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                <span class="logo-text">TAWHIDs Websites</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="wallet.html">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="plans.html">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Plans</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions.html">
+                        <i class="fas fa-history"></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="topbar-user">
+                <div class="user-info">
+                    <span class="user-name" id="topUserName">User</span>
+                    <span class="user-role">Member</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h2>Welcome to TAWHIDs Websites Dashboard!</h2>
+                    <p>Hello, <span id="welcomeName">User</span>! Manage your account, explore plans, and track your transactions all in one place.</p>
+                </div>
+                <div class="welcome-illustration">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card balance-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Current Balance</span>
+                        <span class="stat-value">৳<span id="userBalance">0</span></span>
+                    </div>
+                    <a href="wallet.html" class="stat-link">
+                        <i class="fas fa-plus"></i> Add Funds
+                    </a>
+                </div>
+                <div class="stat-card plan-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Current Plan</span>
+                        <span class="stat-value" id="userPlan">None</span>
+                    </div>
+                    <a href="plans.html" class="stat-link">
+                        <i class="fas fa-shopping-cart"></i> View Plans
+                    </a>
+                </div>
+                <div class="stat-card transactions-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Transactions</span>
+                        <span class="stat-value" id="totalTransactions">0</span>
+                    </div>
+                    <a href="transactions.html" class="stat-link">
+                        <i class="fas fa-history"></i> View History
+                    </a>
+                </div>
+            </div>
+
+            <!-- User Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="info-header">
+                        <h3><i class="fas fa-user-circle"></i> Account Information</h3>
+                    </div>
+                    <div class="info-body">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value" id="userName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email Address</span>
+                            <span class="info-value" id="userEmail">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Account Status</span>
+                            <span class="info-value status-active">Active</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Member Since</span>
+                            <span class="info-value" id="memberSince">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-card">
+                    <div class="info-header">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="quick-links-grid">
+                        <a href="wallet.html" class="quick-link">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <span>Add Balance</span>
+                        </a>
+                        <a href="plans.html" class="quick-link">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <span>Buy Plan</span>
+                        </a>
+                        <a href="transactions.html" class="quick-link">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <span>Transactions</span>
+                        </a>
+                        <a href="index.html" class="quick-link">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span>Home Page</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="recent-transactions">
+                <div class="info-header">
+                    <h3><i class="fas fa-clock"></i> Your Transactions</h3>
+                    <a href="transactions.html" class="view-all">View All</a>
+                </div>
+                <div class="transactions-table-container">
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentTransactions">
+                            <tr>
+                                <td colspan="4" class="no-data">No transactions yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 TAWHID. All Rights Reserved. Powered by TAWHID.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Message</span>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

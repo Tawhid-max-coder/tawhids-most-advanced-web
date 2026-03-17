@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans - TAWHIDs Websites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                <span class="logo-text">TAWHID</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="wallet.html">
+                        <i class="fas fa-wallet"></i>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="plans.html">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Plans</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions.html">
+                        <i class="fas fa-history"></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <h1>Plans</h1>
+            </div>
+            <div class="topbar-user">
+                <div class="user-info">
+                    <span class="user-name" id="topUserName">User</span>
+                    <span class="user-role">Member</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Plans Content -->
+        <div class="dashboard-content">
+            <!-- Current Plan Card -->
+            <div class="current-plan-banner" id="currentPlanBanner">
+                <div class="plan-banner-content">
+                    <div class="plan-banner-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="plan-banner-info">
+                        <span class="plan-banner-label">Your Current Plan</span>
+                        <span class="plan-banner-name" id="currentPlanName">No Plan</span>
+                    </div>
+                </div>
+                <div class="plan-banner-balance">
+                    <span class="balance-label">Balance</span>
+                    <span class="balance-value">৳<span id="userBalance">0</span></span>
+                </div>
+            </div>
+
+            <!-- Plans Section -->
+            <div class="plans-section">
+                <div class="section-header-card">
+                    <h2><i class="fas fa-shopping-bag"></i> Choose Your Plan</h2>
+                    <p>Select the perfect TAWHIDs Websites plan for your website needs</p>
+                </div>
+
+                <div class="plans-grid-dashboard">
+                    <!-- Noob Plan -->
+                    <div class="plan-card-dashboard" data-plan="Noob" data-price="2000">
+                        <div class="plan-card-badge">Starter</div>
+                        <div class="plan-card-header">
+                            <div class="plan-card-icon noob">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h3 class="plan-card-name">Noob</h3>
+                            <div class="plan-card-price">
+                                <span class="currency">৳</span>
+                                <span class="amount">2000</span>
+                            </div>
+                        </div>
+                        <div class="plan-card-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1 Page Website</li>
+                                <li><i class="fas fa-check"></i> Basic Design Template</li>
+                                <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                                <li><i class="fas fa-check"></i> Contact Form</li>
+                                <li><i class="fas fa-check"></i> No Support</li>
+                                <li class="disabled"><i class="fas fa-times"></i> SEO Optimization</li>
+                                <li class="disabled"><i class="fas fa-times"></i> E-commerce</li>
+                                <li><i class="fas fa-check"></i> No Supportive AI</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-outline btn-block buy-plan-btn" data-plan="Noob" data-price="499">
+                            <i class="fas fa-shopping-cart"></i> Buy Plan
+                        </button>
+                    </div>
+
+                    <!-- Normal Plan -->
+                    <div class="plan-card-dashboard featured" data-plan="Normal" data-price="1499">
+                        <div class="plan-card-badge popular">Most Popular</div>
+                        <div class="plan-card-header">
+                            <div class="plan-card-icon normal">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="plan-card-name">Normal</h3>
+                            <div class="plan-card-price">
+                                <span class="currency">৳</span>
+                                <span class="amount">3990</span>
+                            </div>
+                        </div>
+                        <div class="plan-card-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 5 Page Website</li>
+                                <li><i class="fas fa-check"></i> Premium Design</li>
+                                <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                                <li><i class="fas fa-check"></i> Contact Form</li>
+                                <li><i class="fas fa-check"></i> SEO Optimization</li>
+                                <li><i class="fas fa-check"></i> 3 Months Support</li>
+                                <li class="disabled"><i class="fas fa-times"></i> E-commerce</li>
+                                <li><i class="fas fa-check"></i> No Supportive AI</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary btn-block buy-plan-btn" data-plan="Normal" data-price="1499">
+                            <i class="fas fa-shopping-cart"></i> Buy Plan
+                        </button>
+                    </div>
+
+                    <!-- Max Plan -->
+                    <div class="plan-card-dashboard" data-plan="Max" data-price="2999">
+                        <div class="plan-card-badge premium">Premium</div>
+                        <div class="plan-card-header">
+                            <div class="plan-card-icon max">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3 class="plan-card-name">Max</h3>
+                            <div class="plan-card-price">
+                                <span class="currency">৳</span>
+                                <span class="amount">5000</span>
+                            </div>
+                        </div>
+                        <div class="plan-card-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                                <li><i class="fas fa-check"></i> Custom Design</li>
+                                <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                                <li><i class="fas fa-check"></i> Advanced Forms</li>
+                                <li><i class="fas fa-check"></i> Advanced SEO</li>
+                                <li><i class="fas fa-check"></i> E-commerce Ready</li>
+                                <li><i class="fas fa-check"></i> 1 Year Support</li>
+                                <li><i class="fas fa-check"></i> Supportive AI Available</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-outline btn-block buy-plan-btn" data-plan="Max" data-price="2999">
+                            <i class="fas fa-shopping-cart"></i> Buy Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Balance Reminder -->
+            <div class="add-balance-reminder">
+                <div class="reminder-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="reminder-content">
+                    <h4>Need more balance?</h4>
+                    <p>Add funds to your wallet to purchase a plan</p>
+                </div>
+                <a href="wallet.html" class="btn btn-primary">
+                    <i class="fas fa-wallet"></i> Go to Wallet
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 TAWHID. All Rights Reserved. Powered by TAWHID.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Confirm Purchase</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm-plan-info">
+                    <div class="confirm-plan-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h4 id="confirmPlanName">Plan Name</h4>
+                    <p class="confirm-plan-price">৳<span id="confirmPlanPrice">0</span></p>
+                </div>
+                <div class="confirm-balance-info">
+                    <div class="balance-row">
+                        <span>Current Balance:</span>
+                        <span>৳<span id="confirmCurrentBalance">0</span></span>
+                    </div>
+                    <div class="balance-row">
+                        <span>Plan Price:</span>
+                        <span>- ৳<span id="confirmDeduction">0</span></span>
+                    </div>
+                    <div class="balance-row final">
+                        <span>Remaining Balance:</span>
+                        <span>৳<span id="confirmRemainingBalance">0</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelPurchase">Cancel</button>
+                <button class="btn btn-primary" id="confirmPurchase">
+                    <i class="fas fa-check"></i> Confirm Purchase
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Message</span>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/plans.js"></script>
+</body>
+</html>
