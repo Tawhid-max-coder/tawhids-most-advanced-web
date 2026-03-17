@@ -1,6 +1,7 @@
 /* ============================================
    TAWHID - Main Stylesheet
    Premium Website Creation Services
+   Responsive Improved Version
    ============================================ */
 
 /* CSS Variables */
@@ -50,6 +51,7 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -73,10 +75,12 @@ ul {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 /* Container */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -97,6 +101,8 @@ img {
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
+    line-height: 1.2;
+    flex-wrap: wrap;
 }
 
 .btn i {
@@ -163,6 +169,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
+    position: relative;
 }
 
 .nav-logo {
@@ -172,6 +180,7 @@ img {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark);
+    min-width: 0;
 }
 
 .logo-icon {
@@ -183,6 +192,7 @@ img {
     align-items: center;
     justify-content: center;
     color: var(--white);
+    flex-shrink: 0;
 }
 
 .nav-menu {
@@ -195,6 +205,7 @@ img {
     font-weight: 500;
     color: var(--gray-600);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -230,6 +241,7 @@ img {
     gap: 5px;
     cursor: pointer;
     padding: 5px;
+    flex-shrink: 0;
 }
 
 .nav-toggle span {
@@ -243,6 +255,7 @@ img {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 120px 20px 80px;
     position: relative;
     overflow: hidden;
@@ -256,6 +269,7 @@ img {
     right: 0;
     bottom: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .hero-shape {
@@ -313,6 +327,10 @@ img {
     z-index: 1;
 }
 
+.hero-container > * {
+    min-width: 0;
+}
+
 .hero-content {
     animation: fadeInUp 0.8s ease;
 }
@@ -340,6 +358,7 @@ img {
     color: var(--primary);
     box-shadow: var(--shadow);
     margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 .hero-badge i {
@@ -347,7 +366,7 @@ img {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.2;
     color: var(--dark);
@@ -372,11 +391,13 @@ img {
     display: flex;
     gap: 15px;
     margin-bottom: 50px;
+    flex-wrap: wrap;
 }
 
 .hero-stats {
     display: flex;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .stat-item {
@@ -388,6 +409,7 @@ img {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
+    line-height: 1.2;
 }
 
 .stat-label {
@@ -397,6 +419,7 @@ img {
 
 .hero-image {
     animation: fadeInRight 0.8s ease;
+    width: 100%;
 }
 
 @keyframes fadeInRight {
@@ -417,6 +440,7 @@ img {
     box-shadow: var(--shadow-xl);
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: var(--transition);
+    width: 100%;
 }
 
 .hero-card:hover {
@@ -429,11 +453,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .card-dots {
     display: flex;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .dot {
@@ -449,16 +475,20 @@ img {
 .card-title {
     color: var(--gray-400);
     font-size: 0.85rem;
+    min-width: 0;
+    text-align: right;
 }
 
 .card-body {
     padding: 30px;
     font-family: 'Fira Code', monospace;
     font-size: 0.95rem;
+    overflow-x: auto;
 }
 
 .code-line {
     margin-bottom: 8px;
+    white-space: nowrap;
 }
 
 .code-line.indent {
@@ -493,10 +523,11 @@ img {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 700;
     color: var(--dark);
     margin-bottom: 15px;
+    line-height: 1.25;
 }
 
 .section-description {
@@ -520,6 +551,7 @@ img {
     box-shadow: var(--shadow);
     border: 1px solid var(--gray-200);
     transition: var(--transition);
+    width: 100%;
 }
 
 .feature-card:hover {
@@ -545,6 +577,7 @@ img {
     font-size: 1.3rem;
     color: var(--dark);
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .feature-card p {
@@ -587,6 +620,7 @@ img {
     position: relative;
     overflow: hidden;
     transition: var(--transition);
+    width: 100%;
 }
 
 .plan-card:hover {
@@ -620,6 +654,7 @@ img {
     font-weight: 700;
     color: var(--white);
     margin-bottom: 15px;
+    line-height: 1.3;
 }
 
 .plan-price {
@@ -637,9 +672,10 @@ img {
 }
 
 .plan-price .amount {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
     color: var(--white);
+    line-height: 1.1;
 }
 
 .plan-features {
@@ -654,6 +690,7 @@ img {
     color: var(--gray-300);
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.5;
 }
 
 .plan-features li:last-child {
@@ -662,6 +699,7 @@ img {
 
 .plan-features li i {
     color: var(--success);
+    flex-shrink: 0;
 }
 
 .plan-card.featured .plan-features li {
@@ -679,6 +717,10 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+}
+
+.about-content > * {
+    min-width: 0;
 }
 
 .about-text .section-badge {
@@ -709,11 +751,13 @@ img {
     gap: 10px;
     color: var(--gray-700);
     font-weight: 500;
+    line-height: 1.5;
 }
 
 .about-feature i {
     color: var(--success);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .about-image {
@@ -728,6 +772,8 @@ img {
     text-align: center;
     color: var(--white);
     box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 520px;
 }
 
 .about-icon {
@@ -745,6 +791,7 @@ img {
 .about-card h3 {
     font-size: 2rem;
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 /* Contact Section */
@@ -757,6 +804,10 @@ img {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 60px;
+}
+
+.contact-content > * {
+    min-width: 0;
 }
 
 .contact-info {
@@ -788,6 +839,7 @@ img {
     font-size: 1.1rem;
     color: var(--dark);
     margin-bottom: 5px;
+    line-height: 1.3;
 }
 
 .contact-text p {
@@ -799,6 +851,7 @@ img {
     padding: 40px;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow);
+    width: 100%;
 }
 
 .form-group {
@@ -845,6 +898,10 @@ img {
     margin-bottom: 50px;
 }
 
+.footer-content > * {
+    min-width: 0;
+}
+
 .footer-logo {
     display: flex;
     align-items: center;
@@ -863,6 +920,7 @@ img {
 .footer-social {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .footer-social a {
@@ -916,6 +974,7 @@ img {
     opacity: 0;
     transition: var(--transition);
     z-index: 9999;
+    max-width: calc(100vw - 30px);
 }
 
 .toast.show {
@@ -931,10 +990,52 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
+    line-height: 1.4;
 }
 
-/* Responsive */
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .hero-container,
+    .nav-container,
+    .container {
+        max-width: 100%;
+    }
+
+    .hero-container,
+    .about-content,
+    .contact-content {
+        gap: 40px;
+    }
+
+    .features-grid,
+    .plans-grid {
+        gap: 24px;
+    }
+
+    .hero-shape.shape-1 {
+        width: 500px;
+        height: 500px;
+    }
+
+    .hero-shape.shape-2 {
+        width: 320px;
+        height: 320px;
+    }
+
+    .hero-shape.shape-3 {
+        width: 240px;
+        height: 240px;
+    }
+}
+
 @media (max-width: 992px) {
+    .hero {
+        padding: 110px 20px 70px;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -946,10 +1047,6 @@ img {
 
     .hero-image {
         order: 2;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
     }
 
     .hero-description {
@@ -966,7 +1063,7 @@ img {
 
     .hero-card {
         transform: none;
-        max-width: 500px;
+        max-width: 600px;
         margin: 0 auto;
     }
 
@@ -979,17 +1076,73 @@ img {
         transform: scale(1);
     }
 
+    .plan-card.featured:hover {
+        transform: translateY(-10px);
+    }
+
     .about-content,
     .contact-content {
         grid-template-columns: 1fr;
     }
 
+    .about-text .section-title {
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-features {
+        justify-content: center;
+    }
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-shape.shape-1 {
+        width: 380px;
+        height: 380px;
+        top: -140px;
+        right: -120px;
+    }
+
+    .hero-shape.shape-2 {
+        width: 260px;
+        height: 260px;
+        bottom: -80px;
+        left: -80px;
+    }
+
+    .hero-shape.shape-3 {
+        width: 180px;
+        height: 180px;
     }
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .navbar .btn {
+        width: 100%;
+    }
+
+    .nav-container {
+        padding: 14px 16px;
+    }
+
+    .nav-logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+    }
+
     .nav-menu,
     .nav-auth {
         display: none;
@@ -1002,17 +1155,93 @@ img {
     .nav-menu.active {
         display: flex;
         flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
         background: var(--white);
-        padding: 20px;
-        box-shadow: var(--shadow);
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--gray-200);
+    }
+
+    .nav-menu.active .nav-link {
+        padding: 8px 0;
+    }
+
+    .nav-menu.active .nav-link::after {
+        display: none;
+    }
+
+    .hero {
+        padding: 105px 16px 60px;
+    }
+
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 9px 16px;
     }
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 35px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        gap: 20px;
+    }
+
+    .stat-item {
+        flex: 1 1 120px;
+    }
+
+    .stat-number {
+        font-size: 1.7rem;
+    }
+
+    .card-header {
+        padding: 14px 16px;
+    }
+
+    .card-body {
+        padding: 22px 18px;
+        font-size: 0.88rem;
+    }
+
+    .code-line.indent {
+        padding-left: 18px;
+    }
+
+    .features,
+    .plans-preview,
+    .about,
+    .contact {
+        padding: 80px 16px;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-description {
+        font-size: 1rem;
     }
 
     .features-grid,
@@ -1020,16 +1249,316 @@ img {
         grid-template-columns: 1fr;
     }
 
+    .feature-card,
+    .plan-card,
+    .contact-form {
+        padding: 28px 22px;
+    }
+
     .about-features {
         grid-template-columns: 1fr;
+    }
+
+    .about-card {
+        padding: 40px 24px;
+    }
+
+    .about-icon {
+        width: 84px;
+        height: 84px;
+        font-size: 2.5rem;
+    }
+
+    .about-card h3 {
+        font-size: 1.7rem;
+    }
+
+    .contact-item {
+        gap: 16px;
+    }
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.1rem;
+    }
+
+    .footer {
+        padding: 60px 16px 25px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 32px;
+    }
+
+    .footer-logo {
+        justify-content: center;
     }
 
     .footer-social {
         justify-content: center;
+    }
+
+    .toast {
+        right: 16px;
+        left: 16px;
+        bottom: 16px;
+        max-width: none;
+        width: auto;
+        transform: translateY(120px);
+    }
+
+    .toast.show {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .nav-container {
+        padding: 12px 14px;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .nav-toggle span {
+        width: 22px;
+    }
+
+    .nav-menu.active {
+        left: 14px;
+        right: 14px;
+        padding: 16px;
+    }
+
+    .hero {
+        padding: 95px 14px 50px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .stat-item {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 0.78rem;
+    }
+
+    .card-dots .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .card-body {
+        padding: 18px 14px;
+        font-size: 0.8rem;
+    }
+
+    .code-line.indent {
+        padding-left: 12px;
+    }
+
+    .features,
+    .plans-preview,
+    .about,
+    .contact {
+        padding: 65px 14px;
+    }
+
+    .section-badge {
+        font-size: 0.8rem;
+        padding: 7px 16px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .section-description {
+        font-size: 0.95rem;
+    }
+
+    .feature-card {
+        padding: 24px 18px;
+    }
+
+    .feature-icon {
+        width: 68px;
+        height: 68px;
+        font-size: 1.6rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .plan-card {
+        padding: 26px 18px;
+        border-radius: var(--radius-lg);
+    }
+
+    .plan-name {
+        font-size: 1.5rem;
+    }
+
+    .plan-price .currency {
+        font-size: 1.2rem;
+    }
+
+    .plan-price .amount {
+        font-size: 2.4rem;
+    }
+
+    .plan-features li {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+
+    .about-card {
+        padding: 30px 18px;
+    }
+
+    .about-icon {
+        width: 72px;
+        height: 72px;
+        font-size: 2rem;
+    }
+
+    .about-card h3 {
+        font-size: 1.45rem;
+    }
+
+    .contact-info {
+        gap: 24px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .contact-form {
+        padding: 24px 18px;
+        border-radius: var(--radius-lg);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 13px 16px;
+        font-size: 0.95rem;
+    }
+
+    .footer {
+        padding: 50px 14px 22px;
+    }
+
+    .footer-logo {
+        font-size: 1.3rem;
+    }
+
+    .footer-links h4 {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .footer-bottom {
+        padding-top: 22px;
+        font-size: 0.9rem;
+    }
+
+    .hero-shape.shape-1 {
+        width: 260px;
+        height: 260px;
+        top: -100px;
+        right: -100px;
+    }
+
+    .hero-shape.shape-2 {
+        width: 180px;
+        height: 180px;
+        bottom: -60px;
+        left: -60px;
+    }
+
+    .hero-shape.shape-3 {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-badge {
+        font-size: 0.78rem;
+        padding: 8px 14px;
+    }
+
+    .btn,
+    .btn-lg {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.45rem;
+    }
+
+    .feature-card,
+    .plan-card,
+    .contact-form {
+        padding: 20px 14px;
+    }
+
+    .about-card {
+        padding: 24px 14px;
+    }
+
+    .plan-price .amount {
+        font-size: 2.1rem;
+    }
+
+    .toast {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 14px 16px;
+    }
+
+    .toast-content {
+        font-size: 0.9rem;
     }
 }
