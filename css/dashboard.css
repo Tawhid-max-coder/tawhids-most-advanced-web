@@ -1,6 +1,25 @@
 /* ============================================
    TAWHID - Dashboard Pages Stylesheet
+   Responsive Improved Version
    ============================================ */
+
+/* Base */
+.dashboard-page {
+    background: var(--gray-100);
+    overflow-x: hidden;
+}
+
+.dashboard-page *,
+.dashboard-page *::before,
+.dashboard-page *::after {
+    box-sizing: border-box;
+}
+
+.dashboard-page img,
+.dashboard-page svg {
+    max-width: 100%;
+    height: auto;
+}
 
 /* Dashboard Layout */
 .dashboard-page {
@@ -13,12 +32,15 @@
     top: 0;
     left: 0;
     width: 260px;
+    max-width: 260px;
     height: 100vh;
+    height: 100dvh;
     background: var(--dark);
     display: flex;
     flex-direction: column;
     z-index: 1000;
     transition: var(--transition);
+    will-change: transform;
 }
 
 .sidebar-header {
@@ -27,6 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .sidebar-logo {
@@ -36,6 +59,7 @@
     color: var(--white);
     font-size: 1.3rem;
     font-weight: 700;
+    min-width: 0;
 }
 
 .sidebar-logo .logo-icon {
@@ -47,6 +71,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1rem;
+    flex-shrink: 0;
 }
 
 .sidebar-close {
@@ -56,12 +81,14 @@
     color: var(--gray-400);
     font-size: 1.5rem;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .sidebar-nav {
     flex: 1;
     padding: 20px 0;
     overflow-y: auto;
+    min-height: 0;
 }
 
 .sidebar-nav ul li a {
@@ -85,6 +112,7 @@
 .sidebar-nav ul li a i {
     font-size: 1.2rem;
     width: 24px;
+    flex-shrink: 0;
 }
 
 .sidebar-footer {
@@ -109,7 +137,9 @@
 .main-content {
     margin-left: 260px;
     min-height: 100vh;
+    min-height: 100dvh;
     transition: var(--transition);
+    min-width: 0;
 }
 
 /* Top Bar */
@@ -119,6 +149,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
@@ -132,32 +163,42 @@
     font-size: 1.5rem;
     color: var(--gray-600);
     cursor: pointer;
+    flex-shrink: 0;
+}
+
+.topbar-title {
+    min-width: 0;
 }
 
 .topbar-title h1 {
     font-size: 1.5rem;
     color: var(--dark);
+    line-height: 1.3;
 }
 
 .topbar-user {
     display: flex;
     align-items: center;
     gap: 15px;
+    min-width: 0;
 }
 
 .user-info {
     text-align: right;
+    min-width: 0;
 }
 
 .user-name {
     display: block;
     font-weight: 600;
     color: var(--dark);
+    white-space: nowrap;
 }
 
 .user-role {
     font-size: 0.8rem;
     color: var(--gray-500);
+    white-space: nowrap;
 }
 
 .user-avatar {
@@ -170,11 +211,13 @@
     justify-content: center;
     color: var(--white);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 /* Dashboard Content */
 .dashboard-content {
     padding: 30px;
+    min-width: 0;
 }
 
 /* Welcome Section */
@@ -185,6 +228,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 25px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
@@ -204,17 +248,21 @@
 .welcome-content {
     position: relative;
     z-index: 1;
+    min-width: 0;
+    max-width: 650px;
 }
 
 .welcome-content h2 {
     font-size: 1.8rem;
     color: var(--white);
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .welcome-content p {
     color: rgba(255, 255, 255, 0.9);
     max-width: 500px;
+    line-height: 1.6;
 }
 
 .welcome-illustration {
@@ -222,12 +270,13 @@
     color: rgba(255, 255, 255, 0.3);
     position: relative;
     z-index: 1;
+    flex-shrink: 0;
 }
 
 /* Stats Grid */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     margin-bottom: 30px;
 }
@@ -243,6 +292,7 @@
     position: relative;
     overflow: hidden;
     transition: var(--transition);
+    min-width: 0;
 }
 
 .stat-card:hover {
@@ -279,6 +329,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .balance-card .stat-icon {
@@ -298,6 +349,7 @@
 
 .stat-info {
     flex: 1;
+    min-width: 0;
 }
 
 .stat-label {
@@ -311,6 +363,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark);
+    word-break: break-word;
 }
 
 .stat-link {
@@ -329,7 +382,7 @@
 /* Info Section */
 .info-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 25px;
     margin-bottom: 30px;
 }
@@ -340,6 +393,7 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
     overflow: hidden;
+    min-width: 0;
 }
 
 .info-header {
@@ -348,6 +402,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .info-header h3 {
@@ -356,16 +411,19 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    line-height: 1.4;
 }
 
 .info-header h3 i {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .view-all {
     color: var(--primary);
     font-size: 0.9rem;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .info-body {
@@ -376,6 +434,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
     padding: 12px 0;
     border-bottom: 1px solid var(--gray-100);
 }
@@ -392,6 +451,7 @@
 .info-value {
     font-weight: 600;
     color: var(--dark);
+    text-align: right;
 }
 
 .status-active {
@@ -401,7 +461,7 @@
 /* Quick Links */
 .quick-links-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 15px;
     padding: 20px;
 }
@@ -415,6 +475,8 @@
     background: var(--gray-100);
     border-radius: var(--radius-md);
     transition: var(--transition);
+    min-width: 0;
+    text-align: center;
 }
 
 .quick-link:hover {
@@ -431,12 +493,14 @@
     justify-content: center;
     color: var(--white);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .quick-link span {
     font-weight: 500;
     color: var(--gray-700);
     font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 /* Transactions Table */
@@ -450,10 +514,12 @@
 
 .transactions-table-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .transactions-table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
 }
 
@@ -502,7 +568,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 25px;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .balance-info .balance-label {
@@ -516,11 +584,14 @@
     font-size: 3rem;
     font-weight: 800;
     color: var(--white);
+    line-height: 1.2;
+    word-break: break-word;
 }
 
 .wallet-balance-card .balance-icon {
     font-size: 4rem;
     color: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
 }
 
 .add-funds-section {
@@ -542,31 +613,35 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
+    line-height: 1.4;
 }
 
 .section-header-card h2 i {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .section-header-card p {
     color: var(--gray-500);
+    line-height: 1.6;
 }
 
 .payment-methods-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
 }
 
 .payment-method-card {
     background: var(--white);
     border-radius: var(--radius-xl);
-    padding: 35px;
+    padding: 35px 35px 70px;
     text-align: center;
     box-shadow: var(--shadow);
     border: 2px solid transparent;
     transition: var(--transition);
     position: relative;
+    min-width: 0;
 }
 
 .payment-method-card:hover {
@@ -600,11 +675,13 @@
     font-size: 1.3rem;
     color: var(--dark);
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .payment-method-card p {
     color: var(--gray-500);
     margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .payment-badges {
@@ -654,7 +731,7 @@
 
 .wallet-info-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
     margin-bottom: 30px;
 }
@@ -667,6 +744,7 @@
     align-items: center;
     gap: 15px;
     box-shadow: var(--shadow);
+    min-width: 0;
 }
 
 .info-card-icon {
@@ -679,17 +757,24 @@
     justify-content: center;
     color: var(--white);
     font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-card-content {
+    min-width: 0;
 }
 
 .info-card-content h4 {
     font-size: 1rem;
     color: var(--dark);
     margin-bottom: 3px;
+    line-height: 1.4;
 }
 
 .info-card-content p {
     font-size: 0.85rem;
     color: var(--gray-500);
+    line-height: 1.5;
 }
 
 /* Plans Page Styles */
@@ -700,6 +785,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 25px;
     margin-bottom: 30px;
 }
 
@@ -707,6 +793,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    min-width: 0;
 }
 
 .plan-banner-icon {
@@ -719,6 +806,7 @@
     justify-content: center;
     color: var(--white);
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .plan-banner-label {
@@ -732,6 +820,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
+    line-height: 1.3;
 }
 
 .plan-banner-balance .balance-label {
@@ -746,6 +835,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
+    line-height: 1.3;
 }
 
 .plans-section {
@@ -754,7 +844,7 @@
 
 .plans-grid-dashboard {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
 
@@ -767,6 +857,7 @@
     position: relative;
     transition: var(--transition);
     border: 2px solid transparent;
+    min-width: 0;
 }
 
 .plan-card-dashboard:hover {
@@ -834,6 +925,7 @@
     font-size: 1.5rem;
     color: var(--dark);
     margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .plan-card-price .currency {
@@ -846,6 +938,7 @@
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--dark);
+    line-height: 1.2;
 }
 
 .plan-card-features {
@@ -859,10 +952,12 @@
     padding: 10px 0;
     color: var(--gray-600);
     font-size: 0.9rem;
+    text-align: left;
 }
 
 .plan-card-features ul li i {
     color: var(--success);
+    flex-shrink: 0;
 }
 
 .plan-card-features ul li.disabled {
@@ -895,20 +990,24 @@
     justify-content: center;
     color: var(--warning);
     font-size: 1.3rem;
+    flex-shrink: 0;
 }
 
 .reminder-content {
     flex: 1;
+    min-width: 0;
 }
 
 .reminder-content h4 {
     color: var(--dark);
     margin-bottom: 3px;
+    line-height: 1.4;
 }
 
 .reminder-content p {
     color: var(--gray-500);
     font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 /* Modal */
@@ -944,6 +1043,9 @@
     border-radius: var(--radius-xl);
     max-width: 450px;
     width: 100%;
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
     position: relative;
     z-index: 1;
     animation: modalFadeIn 0.3s ease;
@@ -966,6 +1068,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .modal-header h3 {
@@ -974,10 +1077,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    line-height: 1.4;
 }
 
 .modal-header h3 i {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .modal-close {
@@ -987,6 +1092,7 @@
     font-size: 1.3rem;
     cursor: pointer;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .modal-close:hover {
@@ -1019,12 +1125,14 @@
     font-size: 1.5rem;
     color: var(--dark);
     margin-bottom: 5px;
+    line-height: 1.3;
 }
 
 .confirm-plan-price {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
+    line-height: 1.2;
 }
 
 .confirm-balance-info {
@@ -1037,6 +1145,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
     padding: 10px 0;
     color: var(--gray-600);
 }
@@ -1055,12 +1164,13 @@
     display: flex;
     gap: 15px;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 /* Transactions Page Styles */
 .transaction-summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     margin-bottom: 30px;
 }
@@ -1073,6 +1183,7 @@
     align-items: center;
     gap: 20px;
     box-shadow: var(--shadow);
+    min-width: 0;
 }
 
 .summary-icon {
@@ -1083,6 +1194,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .summary-card.deposits .summary-icon {
@@ -1111,6 +1223,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark);
+    word-break: break-word;
 }
 
 .filter-section {
@@ -1124,6 +1237,8 @@
     padding: 10px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .filter-tab {
@@ -1140,6 +1255,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
 .filter-tab:hover {
@@ -1169,6 +1286,7 @@
     padding: 20px 25px;
     border-bottom: 1px solid var(--gray-100);
     transition: var(--transition);
+    gap: 0;
 }
 
 .transaction-item:last-child {
@@ -1188,6 +1306,7 @@
     justify-content: center;
     font-size: 1.2rem;
     margin-right: 20px;
+    flex-shrink: 0;
 }
 
 .transaction-icon.deposit {
@@ -1202,22 +1321,27 @@
 
 .transaction-details {
     flex: 1;
+    min-width: 0;
 }
 
 .transaction-title {
     font-weight: 600;
     color: var(--dark);
     margin-bottom: 3px;
+    line-height: 1.4;
 }
 
 .transaction-date {
     font-size: 0.85rem;
     color: var(--gray-500);
+    line-height: 1.5;
 }
 
 .transaction-amount {
     font-size: 1.2rem;
     font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .transaction-amount.positive {
@@ -1254,6 +1378,7 @@
 .no-transactions p {
     color: var(--gray-500);
     margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 /* Payment Pages Styles */
@@ -1284,16 +1409,18 @@
 .warning-content h3 {
     color: #92400e;
     margin-bottom: 5px;
+    line-height: 1.4;
 }
 
 .warning-content p {
     color: #a16207;
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .payment-form-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 40px;
     margin-bottom: 30px;
 }
@@ -1303,6 +1430,7 @@
     border-radius: var(--radius-xl);
     padding: 40px;
     box-shadow: var(--shadow);
+    min-width: 0;
 }
 
 .form-header {
@@ -1331,10 +1459,12 @@
     font-size: 1.5rem;
     color: var(--dark);
     margin-bottom: 5px;
+    line-height: 1.3;
 }
 
 .form-header p {
     color: var(--gray-500);
+    line-height: 1.6;
 }
 
 .payment-form .form-group {
@@ -1348,10 +1478,12 @@
     font-weight: 500;
     color: var(--gray-700);
     margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 .payment-form label i {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .payment-form input,
@@ -1376,7 +1508,7 @@
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 15px;
 }
 
@@ -1385,6 +1517,7 @@
     font-size: 0.8rem;
     color: var(--gray-500);
     margin-top: 5px;
+    line-height: 1.5;
 }
 
 .otp-verification-form {
@@ -1434,7 +1567,7 @@
 .credit-card {
     width: 100%;
     max-width: 400px;
-    height: 250px;
+    aspect-ratio: 1.6 / 1;
     background: linear-gradient(135deg, #1e3a5f, #2d5a87, #3d7ab7);
     border-radius: var(--radius-xl);
     padding: 30px;
@@ -1461,6 +1594,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .card-chip {
@@ -1468,11 +1604,13 @@
     height: 40px;
     background: linear-gradient(135deg, #d4af37, #f4d03f);
     border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .card-type {
     font-size: 2.5rem;
     color: var(--white);
+    line-height: 1;
 }
 
 .card-number {
@@ -1481,16 +1619,23 @@
     letter-spacing: 4px;
     font-family: 'Courier New', monospace;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    line-height: 1.4;
 }
 
 .card-bottom {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .card-holder-info,
 .card-expiry-info {
     color: var(--white);
+    min-width: 0;
 }
 
 .card-holder-info .label,
@@ -1506,11 +1651,14 @@
 .card-expiry-info .value {
     font-size: 1rem;
     text-transform: uppercase;
+    line-height: 1.3;
 }
 
 .card-security-badges {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .security-badge {
@@ -1524,10 +1672,12 @@
     font-size: 0.85rem;
     font-weight: 500;
     box-shadow: var(--shadow);
+    text-align: center;
 }
 
 .security-badge i {
     color: var(--success);
+    flex-shrink: 0;
 }
 
 /* Mobile Visual */
@@ -1540,8 +1690,9 @@
 }
 
 .mobile-frame {
-    width: 280px;
-    height: 500px;
+    width: min(280px, 100%);
+    max-width: 280px;
+    aspect-ratio: 280 / 500;
     background: #1a1a2e;
     border-radius: 40px;
     padding: 15px;
@@ -1604,6 +1755,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--dark);
+    line-height: 1.2;
 }
 
 .app-merchant {
@@ -1623,6 +1775,7 @@
 .app-merchant .name {
     color: var(--dark);
     font-weight: 600;
+    line-height: 1.4;
 }
 
 .app-status {
@@ -1631,6 +1784,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    line-height: 1.4;
 }
 
 .mobile-home-btn {
@@ -1647,6 +1801,8 @@
 .mobile-info {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .info-badge {
@@ -1671,10 +1827,45 @@
     color: var(--white);
 }
 
-/* Responsive */
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .dashboard-content {
+        padding: 25px;
+    }
+
+    .welcome-section {
+        padding: 35px;
+    }
+
+    .stats-grid,
+    .transaction-summary,
+    .wallet-info-cards,
+    .plans-grid-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .payment-form-card {
+        padding: 32px;
+    }
+
+    .balance-info .balance-amount {
+        font-size: 2.6rem;
+    }
+
+    .wallet-balance-card .balance-icon {
+        font-size: 3.5rem;
+    }
+}
+
 @media (max-width: 992px) {
     .sidebar {
         transform: translateX(-100%);
+        width: 280px;
+        max-width: 85vw;
+        box-shadow: var(--shadow-xl);
     }
 
     .sidebar.active {
@@ -1693,23 +1884,35 @@
         display: block;
     }
 
+    .topbar {
+        padding: 15px 20px;
+    }
+
+    .dashboard-content {
+        padding: 24px;
+    }
+
     .stats-grid,
     .transaction-summary {
         grid-template-columns: 1fr;
     }
 
-    .info-section {
-        grid-template-columns: 1fr;
-    }
-
+    .info-section,
     .payment-methods-grid,
     .plans-grid-dashboard,
-    .payment-form-section {
+    .payment-form-section,
+    .wallet-info-cards {
         grid-template-columns: 1fr;
     }
 
-    .wallet-info-cards {
-        grid-template-columns: 1fr;
+    .current-plan-banner,
+    .wallet-balance-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .plan-banner-balance .balance-label {
+        text-align: left;
     }
 
     .card-visual,
@@ -1718,52 +1921,357 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .topbar {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .topbar-title h1 {
+        font-size: 1.25rem;
+    }
+
+    .topbar-user {
+        gap: 12px;
+    }
+
     .dashboard-content {
-        padding: 15px;
+        padding: 20px;
     }
 
     .welcome-section {
         flex-direction: column;
         text-align: center;
-        padding: 30px 20px;
+        padding: 28px 20px;
+    }
+
+    .welcome-content p {
+        max-width: 100%;
     }
 
     .welcome-illustration {
-        display: none;
+        font-size: 4rem;
     }
 
-    .topbar {
-        padding: 15px;
+    .info-header,
+    .section-header-card h2 {
+        align-items: flex-start;
     }
 
-    .user-info {
-        display: none;
-    }
-
-    .current-plan-banner {
+    .wallet-balance-card,
+    .current-plan-banner,
+    .add-balance-reminder,
+    .warning-banner {
         flex-direction: column;
-        text-align: center;
-        gap: 20px;
+        align-items: flex-start;
     }
 
-    .plan-banner-balance .balance-label {
-        text-align: center;
+    .plan-banner-content {
+        width: 100%;
     }
 
-    .filter-tabs {
-        flex-wrap: wrap;
+    .plan-banner-balance {
+        width: 100%;
+    }
+
+    .plan-banner-balance .balance-label,
+    .plan-banner-balance .balance-value {
+        text-align: left;
+    }
+
+    .payment-form-card {
+        padding: 28px 24px;
     }
 
     .form-row {
         grid-template-columns: 1fr;
     }
 
+    .filter-tabs {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .filter-tab {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        max-width: 88vw;
+    }
+
+    .sidebar-header {
+        padding: 20px;
+    }
+
+    .sidebar-footer {
+        padding: 16px 20px;
+    }
+
+    .dashboard-content {
+        padding: 15px;
+    }
+
+    .topbar {
+        padding: 14px 15px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .welcome-section {
+        padding: 24px 16px;
+    }
+
+    .welcome-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .welcome-illustration {
+        display: none;
+    }
+
+    .stat-card,
+    .summary-card,
+    .info-card-small {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .stat-icon,
+    .summary-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.25rem;
+    }
+
+    .stat-value,
+    .summary-value {
+        font-size: 1.3rem;
+    }
+
+    .info-header {
+        padding: 18px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-body {
+        padding: 16px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+    .quick-links-grid {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .transactions-table {
+        min-width: 620px;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+        padding: 12px 14px;
+    }
+
+    .wallet-balance-card,
+    .current-plan-banner,
+    .section-header-card,
+    .payment-method-card,
+    .payment-form-card,
+    .plan-card-dashboard {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .payment-method-card {
+        padding-top: 24px;
+        padding-bottom: 60px;
+    }
+
+    .section-header-card,
+    .payment-form-card {
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
+
+    .balance-info .balance-amount {
+        font-size: 2.2rem;
+    }
+
+    .wallet-balance-card .balance-icon {
+        font-size: 3rem;
+    }
+
+    .plan-banner-name,
+    .plan-banner-balance .balance-value {
+        font-size: 1.3rem;
+    }
+
+    .plan-card-name {
+        font-size: 1.35rem;
+    }
+
+    .plan-card-price .amount {
+        font-size: 2.2rem;
+    }
+
+    .reminder-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .transaction-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px 12px;
+        align-items: center;
+        padding: 16px 14px;
+    }
+
+    .transaction-icon {
+        margin-right: 0;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+        grid-row: 1 / span 2;
+    }
+
+    .transaction-details {
+        width: 100%;
+    }
+
+    .transaction-amount {
+        grid-column: 2;
+        justify-self: start;
+        font-size: 1.05rem;
+    }
+
+    .warning-banner {
+        padding: 18px;
+    }
+
+    .payment-form input,
+    .payment-form select {
+        padding: 13px 16px;
+        font-size: 0.95rem;
+    }
+
+    .payment-badges .badge {
+        font-size: 0.72rem;
+    }
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-header,
+    .modal-body,
     .modal-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .modal-header {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    .modal-body {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    .modal-footer {
+        padding-top: 16px;
+        padding-bottom: 16px;
         flex-direction: column;
     }
 
     .modal-footer .btn {
         width: 100%;
+    }
+
+    .confirm-plan-info h4 {
+        font-size: 1.3rem;
+    }
+
+    .confirm-plan-price {
+        font-size: 1.7rem;
+    }
+
+    .balance-row {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        max-width: 90vw;
+    }
+
+    .topbar-title h1 {
+        font-size: 1.1rem;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card,
+    .summary-card,
+    .info-card-small {
+        padding: 18px 16px;
+    }
+
+    .balance-info .balance-amount {
+        font-size: 1.9rem;
+    }
+
+    .plan-card-dashboard {
+        padding: 24px 16px;
+    }
+
+    .plan-card-name {
+        font-size: 1.25rem;
+    }
+
+    .plan-card-price .amount {
+        font-size: 2rem;
+    }
+
+    .payment-method-card h3,
+    .form-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .mobile-info {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
 }
